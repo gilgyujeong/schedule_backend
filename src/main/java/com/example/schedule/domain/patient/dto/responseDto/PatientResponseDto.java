@@ -13,20 +13,24 @@ public class PatientResponseDto {
     private Long patientId;
     private String name;
     private int age;
+    private String dx;
     private int physical;
     private LocalDate onset;
     private LocalDate createAt;
     private int nonManner;
     private Gender gender;
+    private Boolean isOut;
 
     public PatientResponseDto(Patient patient) {
         this.patientId = patient.getId();
         this.name = patient.getName();
         this.age = patient.getAge();
+        this.dx = patient.getDx();
         this.physical = patient.getPhysical();
         this.onset = patient.getOnset();
         this.createAt = patient.getCreateAt();
         this.nonManner = patient.getNonManner();
         this.gender = patient.getGender();
+        this.isOut = patient.getIsOut();
     }
 }

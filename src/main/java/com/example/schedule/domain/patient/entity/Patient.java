@@ -1,5 +1,6 @@
 package com.example.schedule.domain.patient.entity;
 
+import com.example.schedule.domain.patient.dto.requestDto.PatientUpdateRequestDto;
 import com.example.schedule.global.globalEnum.Gender;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,6 +31,9 @@ public class Patient {
     private int age;
 
     @Column(nullable = false)
+    private String dx;
+
+    @Column(nullable = false)
     private LocalDate onset;
 
     @Column(nullable = false)
@@ -43,4 +47,18 @@ public class Patient {
 
     @Column
     private Gender gender;
+
+    @Column
+    private Boolean isOut;
+
+    public void update(PatientUpdateRequestDto patientUpdateRequestDto) {
+        this.name = patientUpdateRequestDto.getName();
+        this.age = patientUpdateRequestDto.getAge();
+        this.dx = patientUpdateRequestDto.getDx();
+        this.onset = patientUpdateRequestDto.getOnset();
+        this.createAt = patientUpdateRequestDto.getCreateAt();
+        this.physical = patientUpdateRequestDto.getPhysical();
+        this.nonManner = patientUpdateRequestDto.getNonManner();
+        this.gender = patientUpdateRequestDto.getGender();
+    }
 }

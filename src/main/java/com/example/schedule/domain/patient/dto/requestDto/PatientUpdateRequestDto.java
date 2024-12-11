@@ -12,8 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PatientRequestRegDto {
-
+public class PatientUpdateRequestDto {
     private String name;
     private int age;
     private String dx;
@@ -22,5 +21,4 @@ public class PatientRequestRegDto {
     private LocalDate createAt;
     private int nonManner;
     private Gender gender;
-    private Boolean isOut;
 }

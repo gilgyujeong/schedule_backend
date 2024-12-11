@@ -1,9 +1,11 @@
 package com.example.schedule.domain.patient.controller;
 
 import com.example.schedule.domain.patient.dto.requestDto.PatientRequestRegDto;
+import com.example.schedule.domain.patient.dto.requestDto.PatientUpdateRequestDto;
 import com.example.schedule.domain.patient.service.PatientService;
 import com.example.schedule.global.dto.responseDto.ResponseDataDto;
 import com.example.schedule.global.dto.responseDto.ResponseStatusDto;
+import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,5 +25,10 @@ public class PatientController {
     @GetMapping("/list")
     public ResponseDataDto<?> patientList() {
         return patientService.patientList();
+    }
+
+    @PutMapping("/update/{patientId}")
+    public ResponseStatusDto patientUpdate(@RequestBody PatientUpdateRequestDto patientUpdateRequestDto, @PathVariable Long patientId) {
+        return patientService.patientUpdate(patientUpdateRequestDto, patientId);
     }
 }
