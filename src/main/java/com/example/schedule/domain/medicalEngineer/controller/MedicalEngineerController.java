@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/medical")
+@CrossOrigin(origins = "http://localhost:3000")
 public class MedicalEngineerController {
 
     private final MedicalEngineerService medicalEngineerService;

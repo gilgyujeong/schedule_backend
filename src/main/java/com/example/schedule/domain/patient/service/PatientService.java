@@ -7,7 +7,6 @@ import com.example.schedule.domain.patient.entity.Patient;
 import com.example.schedule.domain.patient.repository.PatientRepository;
 import com.example.schedule.global.dto.responseDto.ResponseDataDto;
 import com.example.schedule.global.dto.responseDto.ResponseStatusDto;
-import com.example.schedule.global.globalEnum.HttpStatusEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -55,6 +54,19 @@ public class PatientService {
                 -> new IllegalArgumentException("존재하지 않는 환자 정보 입니다."));
 
         patient.update(patientUpdateRequestDto);
+        return ResponseStatusDto.builder()
+                .statusCode(OK.getStateCode())
+                .message(OK.getMessage())
+                .build();
+    }
+
+    @Transactional
+    public ResponseStatusDto patientOut(Long patientId) {
+        Patient patient = patientRepository.findById(patientId).orElseThrow(()
+                -> new IllegalArgumentException("존재하지 않는 환자 정보 입니다."));
+
+        patient.update(true);
+
         return ResponseStatusDto.builder()
                 .statusCode(OK.getStateCode())
                 .message(OK.getMessage())

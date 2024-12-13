@@ -61,4 +61,8 @@ public class Patient {
         this.nonManner = patientUpdateRequestDto.getNonManner();
         this.gender = patientUpdateRequestDto.getGender();
     }
+
+    public void update(Boolean isOut) {
+        this.isOut = isOut;
+    }
 }
