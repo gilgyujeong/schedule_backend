@@ -5,7 +5,6 @@ import com.example.schedule.domain.patient.dto.requestDto.PatientUpdateRequestDt
 import com.example.schedule.domain.patient.service.PatientService;
 import com.example.schedule.global.dto.responseDto.ResponseDataDto;
 import com.example.schedule.global.dto.responseDto.ResponseStatusDto;
-import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,5 +29,10 @@ public class PatientController {
     @PutMapping("/update/{patientId}")
     public ResponseStatusDto patientUpdate(@RequestBody PatientUpdateRequestDto patientUpdateRequestDto, @PathVariable Long patientId) {
         return patientService.patientUpdate(patientUpdateRequestDto, patientId);
+    }
+
+    @PatchMapping("/out/{patientId}")
+    public ResponseStatusDto patientOut(@PathVariable Long patientId) {
+        return patientService.patientOut(patientId);
     }
 }
